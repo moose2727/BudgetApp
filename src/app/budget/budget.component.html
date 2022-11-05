@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-xs-2">
+        <h3>Fund</h3>
+    </div>
+    <div class="col-xs-2">
+        <h3>Total</h3>
+    </div>
+    <div class="col-xs-2">
+        <h3>Weekly add</h3>
+    </div>
+    <div class="col-xs-2">
+        <h3>Target</h3>
+    </div>
+    <div class="col-xs-2">
+        <h3></h3>
+    </div>
+    <div class="col-xs-2">
+        
+    </div>   
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-12">
+        <app-expense 
+            *ngFor="let expense of expenses; let i = index"
+            [expense]="expense"
+            class="expense"
+            [id]="i"
+        ></app-expense>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn btn-primary add-expense-btn" (click)="onAddNewExpense()">Add New Expense</button>
+    </div>
+</div>

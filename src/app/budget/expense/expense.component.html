@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-xs-2">
+        <h4>{{ expense.name }}   </h4>
+    </div>
+    <div class="col-xs-2">
+        <h4>
+            ${{ expense.currentTotal }}
+        </h4>
+    </div>
+    <div class="col-xs-2">
+        <h4>
+            ${{ expense.weeklyAdd }}
+        </h4>
+    </div>
+    <div class="col-xs-2">
+        <h4>
+            ${{ expense.target }}
+        </h4>
+    </div>
+    <div class="col-xs-2">
+        <h4>
+            <div class="form-group">
+                    <input type="text" class="form-control">
+            </div>
+        </h4>
+    </div>
+    <div class="col-xs-2">
+        <h4>
+            <button class="btn btn-primary" (click)="onAdd()">Add</button>
+        </h4>
+    </div>
+
+</div>
