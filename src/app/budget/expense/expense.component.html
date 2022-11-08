@@ -18,16 +18,15 @@
         </h4>
     </div>
     <div class="col-xs-2">
-        <h4>
-            <div class="form-group">
-                    <input type="text" class="form-control">
-            </div>
-        </h4>
+        <!-- <input type="text" class="form-control"> -->
+        <mat-form-field class="example-form-field">
+        <mat-label>Clearable input</mat-label>
+        <input matInput type="text">    
+        </mat-form-field>
     </div>
     <div class="col-xs-2">
-        <h4>
-            <button class="btn btn-primary" (click)="onAdd()">Add</button>
-        </h4>
+            <!-- <button class="btn btn-primary" (click)="onAdd()">Add</button> -->
+            <button mat-button (click)="onAdd()">Add</button>
     </div>
 
 </div>

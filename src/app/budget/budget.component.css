@@ -5,3 +5,7 @@
 .add-expense-btn {
     margin-top: 30px
 }
+
+mat-grid-tile {
+    background: lightgrey;
+  }

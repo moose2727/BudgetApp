@@ -4,7 +4,8 @@ import { Expense } from "./expense.model";
 
 @Component({
     selector: 'app-expense',
-    templateUrl: './expense.component.html'
+    templateUrl: './expense.component.html',
+    styleUrls: ['./expense.component.css']
 })
 export class ExpenseComponent implements OnInit {
     @Input() expense: Expense;
