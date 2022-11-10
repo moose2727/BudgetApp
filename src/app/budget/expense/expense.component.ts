@@ -10,6 +10,7 @@ import { Expense } from "./expense.model";
 export class ExpenseComponent implements OnInit {
     @Input() expense: Expense;
     @Input() id: number;
+    amount: number;
 
     constructor(private budgetService: BudgetService){}
 

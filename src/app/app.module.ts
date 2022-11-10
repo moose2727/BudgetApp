@@ -11,6 +11,7 @@ import { ExpenseEditComponent } from './budget/expense/expense-edit/expense-edit
 import { ExpenseComponent } from './budget/expense/expense.component';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatIconModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
