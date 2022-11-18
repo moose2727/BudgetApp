@@ -1,1 +1,47 @@
-<h4>Expense Edit Component</h4>
+<h2 mat-dialog-title>Add New Expense: </h2>
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<div mat-dialog-content class="mat-typography">
+    <label for="expense-name"></label>
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Expense Title:</mat-label>
+          <input 
+            type="text"
+            matInput 
+            ngModel
+            name="expenseTitle">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Goal:</mat-label>
+            <span matPrefix>$ &nbsp;</span>
+            <input 
+                type="text"
+                matInput 
+                ngModel
+                name="goal">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Current Amount:</mat-label>
+            <span matPrefix>$ &nbsp;</span>
+            <input 
+                type="text"
+                matInput 
+                ngModel
+                name="currentTotal">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Amount to Add Weekly:</mat-label>
+            <span matPrefix>$ &nbsp;</span>
+            <input 
+                type="text"
+                matInput 
+                ngModel
+                name="weeklyAdd">
+        </mat-form-field>
+      </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close type="submit">Submit</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>
+</form>
