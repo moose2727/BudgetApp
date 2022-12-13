@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { WarningComponent } from './budget/warning/warning.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     BudgetComponent,
     HeaderComponent,
     ExpenseComponent,
-    ExpenseEditComponent
+    ExpenseEditComponent,
+    WarningComponent,
   ],
   imports: [
     BrowserModule,
