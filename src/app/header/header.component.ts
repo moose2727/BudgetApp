@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Subscription } from "rxjs";
 import { BudgetService } from "../budget/budget.service";
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 @Component({
     selector: 'app-header',
@@ -12,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
     added: number = this.budgetService.unassigned;
     private addedSub: Subscription
 
-    constructor(private budgetService: BudgetService){}
+    constructor(private budgetService: BudgetService, private _dialog: MatDialog){}
 
     ngOnInit(){
         this.addedSub = this.budgetService.unassignedChanged.subscribe(
@@ -27,14 +30,38 @@ export class HeaderComponent implements OnInit, OnDestroy{
     }
 
     onTransfer(){
-        //this.added += 785;
-        //this.total += 785;
-        this.budgetService.unassigned += 785;
-        this.budgetService.total += 785;
-        this.onUpdate();
+        this._dialog.open(InputDialog).afterClosed().subscribe(result => {
+
+            this.onUpdate();
+        })
     }
 
     ngOnDestroy() {
         this.addedSub.unsubscribe()
     }
+}
+
+@Component ({
+    selector: 'ng-input-dialog',
+    templateUrl: './input-dialog.html'
+})
+export class InputDialog{
+    public addAmount: number;
+
+    constructor(
+        public dialogRef: MatDialogRef<InputDialog>, 
+        public budgetService: BudgetService
+    ){}
+
+    onAdd(){
+        if(this.addAmount){
+            this.budgetService.total += this.addAmount;
+            this.budgetService.unassigned += this.addAmount;
+            this.dialogRef.close();
+        }
+    };
+
+    onCancel(){
+        this.dialogRef.close()
+    };
 }

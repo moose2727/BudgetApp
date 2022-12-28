@@ -3,6 +3,7 @@ import { Subject } from "rxjs";
 import { Expense } from "./expense/expense.model";
 import { MatDialog } from "@angular/material/dialog";
 import { WarningComponent } from "./warning/warning.component";
+import { ConfirmDialogService } from "../shared/confirm-dialog/confirm-dialog.service";
 
 @Injectable({providedIn: 'root'})
 export class BudgetService{
@@ -16,7 +17,7 @@ export class BudgetService{
     ];
 
 
-    constructor(private dialog: MatDialog) {}
+    constructor(private dialog: MatDialog, private dialogService: ConfirmDialogService) {}
 
     getExpenses(){
         return this.expenses.slice();
@@ -32,6 +33,11 @@ export class BudgetService{
         this.expensesChanged.next(this.expenses.slice())
     }
 
+    deleteExpense(index: number) {
+        this.expenses.splice(index, 1);
+        this.expensesChanged.next(this.expenses.slice())
+    }
+
     ////ASK ABOUT OBSERVABLES/SUBJECTS///////
     addToFund(id: number, addAmount: number){
         //let amountToAdd: number = this.expenses[id].weeklyAdd;
@@ -43,11 +49,18 @@ export class BudgetService{
             this.unassignedChanged.next(this.unassigned);
             
         }
-        else{
-            const dialogRef = this.dialog.open(WarningComponent, 
-                { data: 
-                {
-                    message: 'Insufficient Funds!'
+        else{ 
+            const options = {
+                title: 'Insufficient Funds!',
+                message: 'Unable to add entered amount.',
+                cancelText: null,
+                confirmText: 'OK'
+              };
+            this.dialogService.open(options);
+
+            this.dialogService.confirmed().subscribe(confirmed => {
+                if(confirmed) {
+                    console.log('confirmed')
                 }
             })
         }

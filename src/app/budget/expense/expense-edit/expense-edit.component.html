@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>Add New Expense: </h2>
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<form  >
 <div mat-dialog-content class="mat-typography">
     <label for="expense-name"></label>
     <div class="example-container">
@@ -10,7 +10,8 @@
             id="expenseTitle"
             matInput 
             [(ngModel)]="expense.name"
-            name="expenseTitle">
+            name="expenseTitle"
+            required>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label for="goal">Goal:</mat-label>
@@ -20,7 +21,8 @@
               id="goal"
               matInput 
               [(ngModel)]="expense.target"
-              name="goal">
+              name="goal"
+              required>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Current Amount:</mat-label>
@@ -30,7 +32,8 @@
               id="currentTotal"
               matInput 
               [(ngModel)]="expense.currentTotal"
-              name="currentTotal">
+              name="currentTotal"
+              required>
         </mat-form-field>
         <mat-form-field appearance="fill">
           <mat-label>Amount to Add Weekly:</mat-label>
@@ -40,12 +43,13 @@
               id="weeklyAdd"
               matInput 
               [(ngModel)]="expense.weeklyAdd"
-              name="weeklyAdd">
+              name="weeklyAdd"
+              required>
         </mat-form-field>
       </div>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close type="submit">Submit</button>
+  <button mat-button mat-dialog-close (click)="onSubmit()">Submit</button>
   <button mat-button mat-dialog-close>Cancel</button>
 </div>
 

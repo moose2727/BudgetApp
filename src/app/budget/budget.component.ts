@@ -14,7 +14,7 @@ export class BudgetComponent implements OnInit{
     expenses: Expense[];
     private subscription: Subscription
 
-    constructor(public budgetService: BudgetService, public dialog: MatDialog){}
+    constructor(public budgetService: BudgetService, public _dialog: MatDialog){}
 
     ngOnInit() {
         this.getExpenses();
@@ -33,12 +33,8 @@ export class BudgetComponent implements OnInit{
         this.expenses = this.budgetService.expenses.slice();
     }
 
-    openDialog(){
-        const dialogRef = this.dialog.open(ExpenseEditComponent);
-
-        dialogRef.afterClosed().subscribe(result => {
-            this.getExpenses();
-        })
+    onAddNewExpense(){
+        this._dialog.open(ExpenseEditComponent);
     }
 }
 

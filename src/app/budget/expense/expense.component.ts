@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
+import { ConfirmDialogComponent } from "src/app/shared/confirm-dialog/confirm-dialog.component";
 import { BudgetService } from "../budget.service";
 import { ExpenseEditComponent } from "./expense-edit/expense-edit.component";
 import { Expense } from "./expense.model";
@@ -15,7 +16,11 @@ export class ExpenseComponent implements OnInit {
     amount: number;
     addAmount: number;
 
-    constructor(private budgetService: BudgetService, private dialog: MatDialog){}
+    constructor(
+        private budgetService: BudgetService, 
+        private dialog: MatDialog,
+        //private dialogService: ConfirmDialogService
+        ){}
 
     ngOnInit(){
         this.addAmount = this.expense.weeklyAdd;
@@ -37,9 +42,22 @@ export class ExpenseComponent implements OnInit {
                     id: this.id
                 }
             });
+    }
 
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('working')
-        })
+    onDelete() {
+        const options = {
+            title: 'Delete?',
+            message: 'Are you sure you want to delete this fund?',
+            cancelText: 'No',
+            confirmText: 'Yes'
+        }
+
+        this.dialog.open(ConfirmDialogComponent, {
+            data: options
+        }).afterClosed().subscribe(response => {
+            if(response == 'Yes'){
+                this.budgetService.deleteExpense(this.id);
+            }
+        });
     }
 }
