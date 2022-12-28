@@ -1,4 +1,24 @@
-<nav class="navbar navbar-default">
+<mat-grid-list cols="3" rowHeight="75px">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+        <h1>My Budget</h1>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="3" rowHeight="40px">
+    <mat-grid-tile><h2>Total Funds</h2></mat-grid-tile>
+    <mat-grid-tile><h2>Unassigned Funds</h2></mat-grid-tile>
+    <mat-grid-tile [rowspan]="2">
+        <button mat-fab color="warn" (click)="onTransfer()">
+            Transfer
+        </button>
+    </mat-grid-tile>
+    <mat-grid-tile><h3>${{ total }}</h3></mat-grid-tile>
+    <mat-grid-tile><h3>${{ added }}</h3></mat-grid-tile>
+</mat-grid-list>
+<hr>
+
+<!-- <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="#" class="navbar-brand">My Budget</a>
@@ -15,10 +35,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <button class="btn btn-danger transfer" (click)="onTransfer()">Transfer</button>
                 </li>
                 <li>
-                    <a href="#">${{ added }}</a>
                 </li>
                 <li>
                     <a href="#">${{ total }}</a>
@@ -29,4 +47,4 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->

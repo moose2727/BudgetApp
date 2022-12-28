@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>How much to add?</h1>
+<div mat-dialog-content>
+  <p>Please enter below: </p>
+  <mat-form-field appearance="fill">
+    <mat-label>Amount</mat-label>
+    <span matPrefix>$ &nbsp;</span>
+    <input matInput type="number" [(ngModel)]="addAmount">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button  cdkFocusInitial (click)="onAdd()">Add</button>
+</div>

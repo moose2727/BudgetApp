@@ -9,12 +9,16 @@ import { AppComponent } from './app.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ExpenseEditComponent } from './budget/expense/expense-edit/expense-edit.component';
 import { ExpenseComponent } from './budget/expense/expense.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent, InputDialog } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { WarningComponent } from './budget/warning/warning.component';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogService } from './shared/confirm-dialog/confirm-dialog.service';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { FormsModule } from '@angular/forms';
     BudgetComponent,
     HeaderComponent,
     ExpenseComponent,
-    ExpenseEditComponent
+    ExpenseEditComponent,
+    WarningComponent,
+    ConfirmDialogComponent,
+    InputDialog
   ],
   imports: [
     BrowserModule,
@@ -34,9 +41,10 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     MatDialogModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatGridListModule
   ],
-  providers: [],
+  providers: [ConfirmDialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

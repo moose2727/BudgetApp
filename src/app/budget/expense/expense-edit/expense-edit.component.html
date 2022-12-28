@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>Add New Expense: </h2>
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<form  >
 <div mat-dialog-content class="mat-typography">
     <label for="expense-name"></label>
     <div class="example-container">
@@ -7,41 +7,50 @@
           <mat-label>Expense Title:</mat-label>
           <input 
             type="text"
+            id="expenseTitle"
             matInput 
-            ngModel
-            name="expenseTitle">
+            [(ngModel)]="expense.name"
+            name="expenseTitle"
+            required>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Goal:</mat-label>
-            <span matPrefix>$ &nbsp;</span>
-            <input 
-                type="text"
-                matInput 
-                ngModel
-                name="goal">
+          <mat-label for="goal">Goal:</mat-label>
+          <span matPrefix>$ &nbsp;</span>
+          <input 
+              type="number"
+              id="goal"
+              matInput 
+              [(ngModel)]="expense.target"
+              name="goal"
+              required>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Current Amount:</mat-label>
-            <span matPrefix>$ &nbsp;</span>
-            <input 
-                type="text"
-                matInput 
-                ngModel
-                name="currentTotal">
+          <mat-label>Current Amount:</mat-label>
+          <span matPrefix>$ &nbsp;</span>
+          <input 
+              type="number"
+              id="currentTotal"
+              matInput 
+              [(ngModel)]="expense.currentTotal"
+              name="currentTotal"
+              required>
         </mat-form-field>
         <mat-form-field appearance="fill">
-            <mat-label>Amount to Add Weekly:</mat-label>
-            <span matPrefix>$ &nbsp;</span>
-            <input 
-                type="text"
-                matInput 
-                ngModel
-                name="weeklyAdd">
+          <mat-label>Amount to Add Weekly:</mat-label>
+          <span matPrefix>$ &nbsp;</span>
+          <input 
+              type="number"
+              id="weeklyAdd"
+              matInput 
+              [(ngModel)]="expense.weeklyAdd"
+              name="weeklyAdd"
+              required>
         </mat-form-field>
       </div>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close type="submit">Submit</button>
+  <button mat-button mat-dialog-close (click)="onSubmit()">Submit</button>
   <button mat-button mat-dialog-close>Cancel</button>
 </div>
+
 </form>

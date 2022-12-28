@@ -42,20 +42,25 @@
     <div class="actions">
         <mat-form-field class="example-form-field" appearance="fill">
         <span matPrefix>$ &nbsp;</span>
-        <input matInput class="amount" type="text">
+        <input 
+            matInput 
+            class="amount" 
+            type="number"
+            id="addAmount"
+            [(ngModel)]="addAmount">
         <button matSuffix mat-icon-button aria-label="Clear"></button>
         </mat-form-field>
-            <button mat-mini-fab class="plus" aria-label="Example icon button with a plus one icon">
+            <button mat-mini-fab class="plus" aria-label="Example icon button with a plus one icon" (click)="onAdd()">
                 <mat-icon>add</mat-icon>
           </button>
-          <button mat-mini-fab class="minus" aria-label="Example icon button with a plus one icon">
+          <button mat-mini-fab class="minus" aria-label="Example icon button with a plus one icon" (click)="onPay()">
             <mat-icon>remove</mat-icon>
           </button>
     </div>
     
       <div class="actions-right">
-        <button class="card-actions" mat-button>EDIT</button>
-        <button class="card-actions" mat-button>DELETE</button>
+        <button class="card-actions" mat-button (click)="onEdit()">EDIT</button>
+        <button class="card-actions" mat-button (click)="onDelete()">DELETE</button>
       </div>
   </mat-card-actions>
 </mat-card>
