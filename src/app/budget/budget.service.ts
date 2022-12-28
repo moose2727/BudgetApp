@@ -58,15 +58,29 @@ export class BudgetService{
               };
             this.dialogService.open(options);
 
-            this.dialogService.confirmed().subscribe(confirmed => {
-                if(confirmed) {
-                    console.log('confirmed')
-                }
-            })
+            // this.dialogService.confirmed().subscribe(confirmed => {
+            //     if(confirmed) {
+            //         console.log('confirmed')
+            //     }
+            // })
         }
     }
 
     pay(id: number, value: number){
-        this.expenses[id].currentTotal -= value;
+        const options ={
+            title: "Insufficient Funds!",
+            message: 'Unable to subtract more than is in your fund.',
+            cancelText: null,
+            confirmText: 'Ok'
+        }
+        if(value > this.expenses[id].currentTotal){
+            this.dialogService.open(options)
+        }
+        else{
+            this.expenses[id].currentTotal -= value;
+            this.unassigned += value;
+            this.unassignedChanged.next(this.unassigned);
+
+        }
     }
 }

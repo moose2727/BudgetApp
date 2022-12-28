@@ -31,7 +31,7 @@ export class ExpenseComponent implements OnInit {
     }
 
     onPay(){
-        this.budgetService.pay(this.id, 20);
+        this.budgetService.pay(this.id, this.addAmount);
     }
 
     onEdit(){
@@ -39,6 +39,10 @@ export class ExpenseComponent implements OnInit {
             ExpenseEditComponent, 
             { data: 
                 {
+                    name: this.expense.name,
+                    currentTotal: this.expense.currentTotal,
+                    weeklyAdd: this.expense.weeklyAdd,
+                    target: this.expense.target,
                     id: this.id
                 }
             });

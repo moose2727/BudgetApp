@@ -26,6 +26,7 @@ export class ExpenseEditComponent implements OnInit{
         this.dialogRef.updateSize('70%')
         if(this.data){
             this.id = this.data.id
+            console.log(this.data)
             this.updatefields();
         }
         else{
@@ -36,11 +37,11 @@ export class ExpenseEditComponent implements OnInit{
 
     updatefields(){
         this.editMode = true;
-            this.expense = new Expense(
-                this.budgetService.expenses[this.id].name, 
-                this.budgetService.expenses[this.id].currentTotal,
-                this.budgetService.expenses[this.id].weeklyAdd,
-                this.budgetService.expenses[this.id].target);
+        this.expense = new Expense(
+            this.data.name, 
+            this.data.currentTotal,
+            this.data.weeklyAdd,
+            this.data.target);
     }
 
     onSubmit(){   
@@ -56,8 +57,8 @@ export class ExpenseEditComponent implements OnInit{
         }).afterClosed().subscribe(response => {
             //debugger
             if(response == 'Submit'){
-                
-                if(this.editMode){
+                debugger;
+                if(this.id != undefined || null){
                     this.budgetService.updateExpense(this.id, this.expense)
                 }
                 else{
@@ -65,10 +66,16 @@ export class ExpenseEditComponent implements OnInit{
                 }
             }
             else {
-                //this.editMode = true;
-                // this._dialog.open(ExpenseEditComponent, {
-                //     data: this.id
-                // }) 
+                this.editMode = true;
+                this._dialog.open(ExpenseEditComponent, {
+                    data: 
+                    {
+                        name: this.expense.name,
+                        currentTotal: this.expense.currentTotal,
+                        weeklyAdd: this.expense.weeklyAdd,
+                        target: this.expense.target
+                    }
+                }) 
                 
             }
         })

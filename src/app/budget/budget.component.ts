@@ -25,10 +25,6 @@ export class BudgetComponent implements OnInit{
         )
     }
 
-    // onAddNewExpense(){
-    //     this.getExpenses();
-    // }
-
     getExpenses(){
         this.expenses = this.budgetService.expenses.slice();
     }
@@ -37,14 +33,3 @@ export class BudgetComponent implements OnInit{
         this._dialog.open(ExpenseEditComponent);
     }
 }
-
-// @Component({
-//     selector: 'add-expense-dialog',
-//     templateUrl: './add-new-expense-dialog.html'
-// })
-// export class AddNewExpenseDialog {
-//     @ViewChild('f', {static: false}) newExpenseForm: NgForm
-
-//     onSubmit(){}
-
-// }
